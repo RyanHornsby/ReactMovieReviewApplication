@@ -1,0 +1,70 @@
+.movieCard {
+    width: 300px;
+    height: 400px;
+    border: 7px solid transparent;
+    border-radius: 8px;
+    position: relative;
+    background: linear-gradient(45deg, rgb(34, 34, 182), rgb(149, 204, 223), rgb(62, 62, 216)) border-box;
+    /* background: linear-gradient(45deg, rgb(255, 255, 255), rgb(0, 0, 0), rgb(255, 255, 255)) border-box; */
+    background-size: 200% 200%;
+    background-position: 0% 50%;
+}
+
+.movieCard:hover {
+    animation: border-glint 1.5s linear infinite;
+    background: linear-gradient(45deg, rgb(29, 29, 90), rgb(130, 190, 194), rgb(15, 14, 117)) border-box;
+    background-size: 200% 200%;
+    background-position: 0% 50%;
+}
+.moviePoster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
+.movieLink {
+    color: white;
+}
+
+/*figcaption stuff*/
+.movieDetails {
+    width: 100%;
+    min-height: 70px;
+    padding: 7px; 
+    position: absolute;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+}
+.movieTitle {
+    font-weight: bold;
+}
+.movieGenres {
+    font-style: italic;
+    font-size: 12px;
+    margin-bottom: 5px;
+    font-weight: 650;
+}
+.movieTechnicalInfo {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: 650;
+}
+.movieDetails:hover {
+    background: transparent;
+    color: transparent;
+}
+
+/*Animations*/
+@keyframes border-glint {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+} 

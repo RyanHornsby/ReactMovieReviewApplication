@@ -1,0 +1,51 @@
+#filterSection {    
+    width: 100%;
+    height: 150px;
+    color: rgb(213, 237, 240);
+}
+
+#filtersControls {
+    float: right;
+    width: 450px;
+}
+
+#filtersControls > h1 {
+    font-size: 34px;
+    font-weight: 700;
+    font-style: italic;
+    margin: 10px 0;
+}
+
+#filtersContainer, #sortingControls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#byRatingsContainer, #sortingControls {
+    display: flex;    
+    flex-grow: 1;
+}
+
+#byRatings {
+    display: flex;
+    gap: 8%;
+    list-style: none;
+    font-size: 28px;
+    font-weight: 600;
+    margin: 5px 0;
+    padding: 0;    
+}
+
+.sortBy, .sortBy > option {
+    border-radius: 5px;
+    color: black;
+    font-weight: bold;
+    background-color: rgb(213, 237, 240);
+    height: 35px;
+    padding: 5px;
+}
+
+.movieRating {
+    cursor: pointer;
+}

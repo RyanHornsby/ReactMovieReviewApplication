@@ -1,0 +1,64 @@
+header {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;        
+    width: 100%;
+    height: 70px;
+    background: radial-gradient(aquamarine, aqua);
+    align-items: center;
+    font-weight: bold;
+    justify-content: space-between;
+    z-index: 5;
+}
+
+header > a, header > nav {
+    margin: 0 3%;
+}
+
+header > a {
+    text-decoration: none;
+    color: black;
+}
+
+#appName {
+    font-style: italic;
+    font-weight: bold;
+}
+
+#appName:hover {
+    animation: shrink-grow 3s linear infinite;
+}
+
+header > nav {
+    display: flex;
+    gap: 15px;
+}
+
+nav > a {
+    text-decoration: none;
+    color: rgb(18, 77, 41);
+}
+
+nav > a:hover {
+    text-decoration: underline;
+}
+
+/*Animations*/
+@keyframes shrink-grow {
+    0% {
+        transform: scale(1);
+    }
+    25% {
+        transform: scale(1.06);
+    }
+    50% {
+        transform: scale(1);
+    }
+    75% {
+        transform: scale(0.94);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
