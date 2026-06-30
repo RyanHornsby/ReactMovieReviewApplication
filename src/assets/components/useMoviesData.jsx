@@ -11,18 +11,15 @@ const useMoviesData = () => {
   useEffect(() => {fetchMovies()}, []);
   // Fetches data from TMDB
   async function fetchMovies() {
-    // Figure out genres before actual data so don't have to wait for it to load in
-    const fetchedGenres = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}`);
-    if (fetchedGenres) {
-      console.log(`fetchedGenres: ${fetchedGenres}`)
-    };
-    const genresJson = await fetchedGenres.json();
-    // Uses the reduce function to put it in a usable object form
-    const genresObject = genresJson.genres.reduce((acc, genre) => {
+    try {
+      // 1. Fetch and format genres
+      const fetchedGenres = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}`);
+      const genresJson = await fetchedGenres.json();
+      const genresObject = genresJson.genres.reduce((acc, genre) => {
         acc[genre.id] = genre.name;
         return acc;
-    }, {});
-    setGenres(genresObject);
+      }, {});
+      setGenres(genresObject);
 
     // Retrieves all info
     // API limits you to 500 pages of data total and there are lots more. So to circumvent this, just get data from each year. Still limited to 500 per year though. If I cared that much, I could then go per year per month
