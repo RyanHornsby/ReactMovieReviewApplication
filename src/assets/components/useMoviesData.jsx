@@ -5,7 +5,7 @@ const useMoviesData = () => {
   const currentYear = (new Date).getFullYear(); // Gets current year once upon loading
   const [allMovies, setAllMovies] = useState([]);  
   const [genres, setGenres] = useState({});
-  const apiKey = import.meta.env.REACT_APP_API_KEY;
+  const apiKey = process.env.REACT_APP_API_KEY;
 
   // Runs the function to fetch data once upon loading
   useEffect(() => {fetchMovies()}, []);
