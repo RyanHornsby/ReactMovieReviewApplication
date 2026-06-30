@@ -13,6 +13,9 @@ const useMoviesData = () => {
   async function fetchMovies() {
     // Figure out genres before actual data so don't have to wait for it to load in
     const fetchedGenres = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}`);
+    if (fetchedGenres) {
+      console.log(`fetchedGenres: ${fetchedGenres}`)
+    };
     const genresJson = await fetchedGenres.json();
     // Uses the reduce function to put it in a usable object form
     const genresObject = genresJson.genres.reduce((acc, genre) => {
