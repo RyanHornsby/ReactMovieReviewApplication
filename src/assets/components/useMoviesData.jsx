@@ -85,4 +85,4 @@ async function fetchMovies() {
   }
 }
 
-export default useMoviesData
+export default useMoviesData;
