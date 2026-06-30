@@ -5,13 +5,14 @@ const useMoviesData = () => {
   const currentYear = (new Date).getFullYear(); // Gets current year once upon loading
   const [allMovies, setAllMovies] = useState([]);  
   const [genres, setGenres] = useState({});
+  const apiKey = process.env.REACT_APP_API_KEY;
 
   // Runs the function to fetch data once upon loading
   useEffect(() => {fetchMovies()}, []);
   // Fetches data from TMDB
   async function fetchMovies() {
     // Figure out genres before actual data so don't have to wait for it to load in
-    const fetchedGenres = await fetch("https://api.themoviedb.org/3/genre/movie/list?api_key=FillMeIn>");
+    const fetchedGenres = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}`);
     const genresJson = await fetchedGenres.json();
     // Uses the reduce function to put it in a usable object form
     const genresObject = genresJson.genres.reduce((acc, genre) => {
@@ -30,7 +31,7 @@ const useMoviesData = () => {
     let fetchedDataCombined = [];
     for (let year=currentYear; year>1867; year--) {
       // Looks at the first page of each year and determines how many pages there are
-      fetchedData = await fetch(`https://api.themoviedb.org/3/discover/movie?primary_release_year=${year}&api_key=FillMeIn&sort_by=popularity.desc`);
+      fetchedData = await fetch(`https://api.themoviedb.org/3/discover/movie?primary_release_year=${year}&api_key=${apiKey}&sort_by=popularity.desc`);
       data = await fetchedData.json();  
         for (let i=0; i<data.results.length; i++) {
           if (!allMovieIds.includes(data.results[i].id)) {
@@ -41,7 +42,7 @@ const useMoviesData = () => {
       setAllMovies([...fetchedDataCombined]);          
       // API shows 20 entries per page, so go through each page per year from 2nd page onwards as first page already added
       for (let pageNo=2; pageNo < Math.min(data.total_pages, 5); pageNo++) {
-        fetchedData = await fetch(`https://api.themoviedb.org/3/discover/movie?primary_release_year=${year}&api_key=FillMeIn&sort_by=popularity.desc&page=${pageNo}`);
+        fetchedData = await fetch(`https://api.themoviedb.org/3/discover/movie?primary_release_year=${year}&api_key=${apiKey}&sort_by=popularity.desc&page=${pageNo}`);
         data = await fetchedData.json();
         for (let i=0; i<data.results.length; i++) {
           if (!allMovieIds.includes(data.results[i].id)) {
